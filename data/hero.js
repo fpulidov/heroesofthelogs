@@ -17,7 +17,6 @@ module.exports = {
 					return console.error('error happened during query', err)
 					}
 					return console.log('Insertion succesful')
-					process.exit(0)
 				})
 				});
 	},
@@ -48,7 +47,6 @@ module.exports = {
 					return console.error('error happened during query', err)
 				}
 				console.log(elem);
-				process.exit(0)
 				return elem;
 			})
 		});

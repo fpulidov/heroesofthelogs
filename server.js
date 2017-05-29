@@ -17,8 +17,14 @@ app.use(express.static('public'));
 app.get('/', (request, response) => 
 {
 	response.sendFile(path.join(__dirname, '/view/index.html'));
-	hero.getHeroes();
 	console.log('Index requested, retrieving heroes');
+})
+
+app.get('/heroload', (request, response) => 
+{
+	//This endpoint will load heroes into
+	console.log('Index requested, retrieving heroes');
+	hero.getHeroes();
 })
 
 app.get('/heroe', (request, response) => {
