@@ -1,0 +1,48 @@
+{
+  "name": "heroesofthelogs",
+  "version": "1.0.0",
+  "description": "Logs for heroe picking for HotS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpulidov/heroesofthelogs.git"
+  },
+  "keywords": [
+    "Heroes",
+    "of",
+    "the",
+    "storm",
+    "heroes",
+    "build",
+    "heroes",
+    "pick",
+    "ratio",
+    "heroes",
+    "talent",
+    "pick",
+    "ratio",
+    "diablo",
+    "overwatch",
+    "hots",
+    "moba",
+    "Blizzard",
+    "Starcraft",
+    "Heroe"
+  ],
+  "author": "Francisco Javier Pulido Vergara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fpulidov/heroesofthelogs/issues"
+  },
+  "homepage": "https://github.com/fpulidov/heroesofthelogs#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "pg": "^6.2.3",
+    "pgsql": "^1.0.0"
+  }
+}
