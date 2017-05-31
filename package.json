@@ -39,10 +39,14 @@
   },
   "homepage": "https://github.com/fpulidov/heroesofthelogs#readme",
   "dependencies": {
+    "async": "^2.4.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "jade": "^1.11.0",
     "pg": "^6.2.3",
-    "pgsql": "^1.0.0"
+    "pgsql": "^1.0.0",
+    "promis": "^1.1.4",
+    "promise": "^7.1.1"
   }
 }

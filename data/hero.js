@@ -26,30 +26,35 @@ module.exports = {
 		//Initialize array
 		var elem = [];
 		console.log('Querying heroes');
-		pg.connect(conString, function (err, client, done) 
+		return new Promise((resolve, reject) =>
 		{
-			if (err) 
+
+			pg.connect(conString, function (err, client, done) 
 			{
-				return console.error('error fetching client from pool', err)
-			}
-			//Execute SELECT query
-			client.query('SELECT name from heroe;', function (err, rows, result) 
-			{
-				//Iterate over results
-				for (var i = 0; i < rows.rowCount; i++) 
-				{
-					//PUSH result into arrays
-					elem.push(rows.rows[i].name);
-				}
-				done()
 				if (err) 
 				{
-					return console.error('error happened during query', err)
+					return console.error('error fetching client from pool', err)
 				}
-				console.log(elem);
-				return elem;
-			})
-		});
+				//Execute SELECT query
+				client.query('SELECT * from heroe;', function (err, rows, result) 
+				{
+					//Iterate over results
+					for (var i = 0; i < rows.rowCount; i++) 
+					{
+						//PUSH result into arrays
+						elem.push(rows.rows[i]);
+					}
+					done()
+					if (err) 
+					{
+						return console.error('error happened during query', err)
+					}
+					resolve(elem)
+				})
+			});
+			
+		})
+		
 	}
    
 }

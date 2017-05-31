@@ -7,12 +7,14 @@ const http = require('http');
 const port = 8000;
 var hero = require('./data/hero.js');
 
+app.set('views', './view')
+app.set('view engine', 'jade');
+app.use(express.static('public'));
+
 const requestHandler = (request, response) => {
 	console.log(request.url)
 	response.end('Server ending')
 }
-
-app.use(express.static('public'));
 
 app.get('/', (request, response) => 
 {
@@ -22,15 +24,29 @@ app.get('/', (request, response) =>
 
 app.get('/heroload', (request, response) => 
 {
-	//This endpoint will load heroes into
 	console.log('Index requested, retrieving heroes');
 	hero.getHeroes();
 })
 
-app.get('/heroe', (request, response) => {
+app.get('/heroe', (request, response) => 
+{
 	response.sendFile(path.join(__dirname, '/view/insert_heroe.html'));
 	console.log('heroe insertion test requested');
-	})
+})
+
+app.get('/jade', (request, response) => 
+{
+	var heroList = [];
+	hero.getHeroes().then(data=>
+	{
+   		heroList = data;
+   		console.log(heroList)
+    	response.render('test_jade', {param1: heroList});
+	}).catch(e=>{
+        //handle error case here when your promise fails
+        console.log(e)
+    });
+})
 
 
 //Hero insertion for testing purposes

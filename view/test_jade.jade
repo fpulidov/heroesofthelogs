@@ -1,0 +1,19 @@
+doctype html
+html
+head
+title my jade template
+body
+	h1 Hello
+	div
+	-var heroes = param1
+		table
+			thead
+
+			each test in heroes
+				tr
+					td 
+						a #{test.name}
+					td
+						a #{test.num_picked}
+					td
+						a #{test.pic}
