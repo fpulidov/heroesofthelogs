@@ -3,16 +3,18 @@ html
 head
 title my jade template
 body
-	h1 Hello
 	div
-	-var heroes = param1
-		table
-			thead
-			each test in heroes
-				tr
-					td 
-						a #{test.name}
-					td
-						a #{test.num_picked}
-					td
-						img(src="/resources/avatar_037e4af9915c_128.png")
+		a(class="register" id="register" href="/register") Register
+	div 
+		h1 HotS pick ratio by heroe
+		div
+			table
+				thead
+				each test in param1
+					tr
+						td 
+							a #{test.name}
+						td
+							a #{test.num_picked}
+						td
+							//img(src="/resources/avatar_037e4af9915c_128.png" height="35" width="35")

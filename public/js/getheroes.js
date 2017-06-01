@@ -1,10 +1,3 @@
 $(document).ready(function(){
-       heroes = $.get( '/heroload');
-       generateTable();
-
+   heroes = $.get( '/heroload');
 });
-
-function generateTable()
-{
-
-}

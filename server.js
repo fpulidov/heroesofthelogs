@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const http = require('http');
 const port = 8000;
 var hero = require('./data/hero.js');
+var register = require('./data/register.js');
 
 app.set('views', './view')
 app.set('view engine', 'jade');
@@ -17,24 +18,6 @@ const requestHandler = (request, response) => {
 }
 
 app.get('/', (request, response) => 
-{
-	response.sendFile(path.join(__dirname, '/view/index.html'));
-	console.log('Index requested, retrieving heroes');
-})
-
-app.get('/heroload', (request, response) => 
-{
-	console.log('Index requested, retrieving heroes');
-	hero.getHeroes();
-})
-
-app.get('/heroe', (request, response) => 
-{
-	response.sendFile(path.join(__dirname, '/view/insert_heroe.html'));
-	console.log('heroe insertion test requested');
-})
-
-app.get('/jade', (request, response) => 
 {
 	var heroList = [];
 	hero.getHeroes().then(data=>
@@ -48,10 +31,37 @@ app.get('/jade', (request, response) =>
     });
 })
 
+app.get('/heroload', (request, response) => 
+{
+	hero.getHeroes();
+	response.status(200);
+})
+
+app.get('/heroe', (request, response) => 
+{
+	response.sendFile(path.join(__dirname, '/view/insert_heroe.html'));
+	response.status(200);
+	console.log('heroe insertion test requested');
+})
+
+app.get('/register', (request, response) => 
+{
+	response.render('register');
+	console.log('register');
+})
+
+app.get('/newuser', (request, response) => 
+{
+	
+	register.register(request.query.email, request.query.username, request.query.password);
+	console.log('register');
+})
+
 
 //Hero insertion for testing purposes
 app.get('/heroeinsert', (request, response) => {
 	hero.insertHero(request.query.heroeName);
+	response.status(200);
 })
 
 app.listen(port, (error) =>
